@@ -167,7 +167,7 @@
     ("JSON" prettier)
     ("JSON5" prettier)
     ("Jsonnet" jsonnetfmt)
-    ("JuliaFormatter" juliaformatter)
+    ("Julia" juliaformatter)
     ("JSX" prettier)
     ("Kotlin" ktlint)
     ("LaTeX" latexindent)
@@ -640,886 +640,886 @@ Consult the existing formatters for examples of BODY."
             ',formatter)))
 
 (define-format-all-formatter alejandra
-  (:executable "alejandra")
-  (:install "nix-env -if https://github.com/kamadorueda/alejandra/tarball/master")
-  (:languages "Nix")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "alejandra")
+                             (:install "nix-env -if https://github.com/kamadorueda/alejandra/tarball/master")
+                             (:languages "Nix")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter asmfmt
-  (:executable "asmfmt")
-  (:install)
-  (:languages "Assembly")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "asmfmt")
+                             (:install)
+                             (:languages "Assembly")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter astyle
-  (:executable "astyle")
-  (:install (macos "brew install astyle"))
-  (:languages "C" "C++" "C#" "Java")
-  (:features)
-  (:format (format-all--buffer-easy
-            executable
-            (let ((astylerc (format-all--locate-file ".astylerc")))
-              (when astylerc (concat "--options=" astylerc))))))
+                             (:executable "astyle")
+                             (:install (macos "brew install astyle"))
+                             (:languages "C" "C++" "C#" "Java")
+                             (:features)
+                             (:format (format-all--buffer-easy
+                                       executable
+                                       (let ((astylerc (format-all--locate-file ".astylerc")))
+                                         (when astylerc (concat "--options=" astylerc))))))
 
 (define-format-all-formatter atsfmt
-  (:executable "atsfmt")
-  (:install "cabal new-install ats-format --happy-options='-gcsa' -O2")
-  (:languages "ATS")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "atsfmt")
+                             (:install "cabal new-install ats-format --happy-options='-gcsa' -O2")
+                             (:languages "ATS")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter auctex
-  (:executable)
-  (:install)
-  (:languages "LaTeX")
-  (:features)
-  (:format (format-all--buffer-native
-            'latex-mode
-            (lambda ()
-              (let ((f (symbol-function 'LaTeX-fill-buffer)))
-                (when f (funcall f nil)))))))
+                             (:executable)
+                             (:install)
+                             (:languages "LaTeX")
+                             (:features)
+                             (:format (format-all--buffer-native
+                                       'latex-mode
+                                       (lambda ()
+                                         (let ((f (symbol-function 'LaTeX-fill-buffer)))
+                                           (when f (funcall f nil)))))))
 
 (define-format-all-formatter bean-format
-  (:executable "bean-format")
-  (:install "pip install beancount")
-  (:languages "_Beancount")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "bean-format")
+                             (:install "pip install beancount")
+                             (:languages "_Beancount")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter beautysh
-  (:executable "beautysh")
-  (:install "pip install beautysh")
-  (:languages "Shell")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "beautysh")
+                             (:install "pip install beautysh")
+                             (:languages "Shell")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter black
-  (:executable "black")
-  (:install "pip install black")
-  (:languages "Python")
-  (:features)
-  (:format (format-all--buffer-easy
-            executable "-q"
-            (when (format-all--buffer-extension-p "pyi") "--pyi")
-            "-")))
+                             (:executable "black")
+                             (:install "pip install black")
+                             (:languages "Python")
+                             (:features)
+                             (:format (format-all--buffer-easy
+                                       executable "-q"
+                                       (when (format-all--buffer-extension-p "pyi") "--pyi")
+                                       "-")))
 
 (define-format-all-formatter brittany
-  (:executable "brittany")
-  (:install "stack install brittany")
-  (:languages "Haskell" "Literate Haskell")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "brittany")
+                             (:install "stack install brittany")
+                             (:languages "Haskell" "Literate Haskell")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter bsrefmt
-  (:executable "bsrefmt")
-  (:install "npm install --global bs-platform")
-  (:languages "Reason")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "bsrefmt")
+                             (:install "npm install --global bs-platform")
+                             (:languages "Reason")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter buildifier
-  (:executable "buildifier")
-  (:install
-   (macos "brew install buildifier")
-   "go get github.com/bazelbuild/buildtools/buildifier")
-  (:languages "Bazel")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "buildifier")
+                             (:install
+                              (macos "brew install buildifier")
+                              "go get github.com/bazelbuild/buildtools/buildifier")
+                             (:languages "Bazel")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter cabal-fmt
-  (:executable "cabal-fmt")
-  (:install "cabal install cabal-fmt")
-  (:languages "Cabal Config")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "cabal-fmt")
+                             (:install "cabal install cabal-fmt")
+                             (:languages "Cabal Config")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter caddy-fmt
-  (:executable "caddy")
-  (:install
-   (macos "brew install caddy")
-   (windows "scoop install caddy"))
-  (:languages "_Caddyfile")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt" "-")))
+                             (:executable "caddy")
+                             (:install
+                              (macos "brew install caddy")
+                              (windows "scoop install caddy"))
+                             (:languages "_Caddyfile")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt" "-")))
 
 (define-format-all-formatter cargo-fmt
-  ;; This is the same formatter as rustfmt, but run via `cargo fmt`.
-  (:executable "cargo")
-  (:install "rustup component add rustfmt")
-  (:languages "Rust")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt")))
+                             ;; This is the same formatter as rustfmt, but run via `cargo fmt`.
+                             (:executable "cargo")
+                             (:install "rustup component add rustfmt")
+                             (:languages "Rust")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt")))
 
 (define-format-all-formatter clang-format
-  (:executable "clang-format")
-  (:install
-   (macos "brew install clang-format")
-   (windows "scoop install llvm"))
-  (:languages
-   "_AZSL" "C" "C#" "C++" "Cuda" "GLSL" "HLSL" "Java" "Objective-C" "Protocol Buffer")
-  (:features region)
-  (:format
-   (format-all--buffer-easy
-    executable
-    "-assume-filename"
-    (or (buffer-file-name)
-        (cdr (assoc language
-                    '(("C"               . ".c")
-                      ("C#"              . ".cs")
-                      ("C++"             . ".cpp")
-                      ("Cuda"            . ".cu")
-                      ("GLSL"            . ".glsl")
-                      ("Java"            . ".java")
-                      ("Objective-C"     . ".m")
-                      ("Protocol Buffer" . ".proto")))))
-    (when region
-      (list "--offset" (number-to-string (1- (car region)))
-            "--length" (number-to-string (- (cdr region) (car region))))))))
+                             (:executable "clang-format")
+                             (:install
+                              (macos "brew install clang-format")
+                              (windows "scoop install llvm"))
+                             (:languages
+                              "_AZSL" "C" "C#" "C++" "Cuda" "GLSL" "HLSL" "Java" "Objective-C" "Protocol Buffer")
+                             (:features region)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               "-assume-filename"
+                               (or (buffer-file-name)
+                                   (cdr (assoc language
+                                               '(("C"               . ".c")
+                                                 ("C#"              . ".cs")
+                                                 ("C++"             . ".cpp")
+                                                 ("Cuda"            . ".cu")
+                                                 ("GLSL"            . ".glsl")
+                                                 ("Java"            . ".java")
+                                                 ("Objective-C"     . ".m")
+                                                 ("Protocol Buffer" . ".proto")))))
+                               (when region
+                                 (list "--offset" (number-to-string (1- (car region)))
+                                       "--length" (number-to-string (- (cdr region) (car region))))))))
 
 (define-format-all-formatter cljfmt
-  (:executable "cljfmt")
-  (:install)
-  (:languages "Clojure")
-  (:features)
-  (:format (format-all--buffer-easy executable "fix" "-")))
+                             (:executable "cljfmt")
+                             (:install)
+                             (:languages "Clojure")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fix" "-")))
 
 (define-format-all-formatter cmake-format
-  (:executable "cmake-format")
-  (:install "pip install cmake-format")
-  (:languages "CMake")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "cmake-format")
+                             (:install "pip install cmake-format")
+                             (:languages "CMake")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter crystal
-  (:executable "crystal")
-  (:install (macos "brew install crystal"))
-  (:languages "Crystal")
-  (:features)
-  (:format (format-all--buffer-easy executable "tool" "format" "-")))
+                             (:executable "crystal")
+                             (:install (macos "brew install crystal"))
+                             (:languages "Crystal")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "tool" "format" "-")))
 
 (define-format-all-formatter csharpier
-  (:executable "dotnet-csharpier")
-  (:install "dotnet install -g csharpier")
-  (:languages "C#")
-  (:features)
-  (:format (format-all--buffer-easy executable "--write-stdout")))
+                             (:executable "dotnet-csharpier")
+                             (:install "dotnet install -g csharpier")
+                             (:languages "C#")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "--write-stdout")))
 
 (define-format-all-formatter dart-format
-  (:executable "dart")
-  (:install (macos "brew tap dart-lang/dart && brew install dart"))
-  (:languages "Dart")
-  (:features)
-  (:format
-   (format-all--buffer-easy executable "format" "--output" "show")))
+                             (:executable "dart")
+                             (:install (macos "brew tap dart-lang/dart && brew install dart"))
+                             (:languages "Dart")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy executable "format" "--output" "show")))
 
 (define-format-all-formatter dartfmt
-  (:executable "dartfmt")
-  (:install (macos "brew tap dart-lang/dart && brew install dart"))
-  (:languages "Dart")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable
-    (when (buffer-file-name)
-      (list "--stdin-name" (buffer-file-name))))))
+                             (:executable "dartfmt")
+                             (:install (macos "brew tap dart-lang/dart && brew install dart"))
+                             (:languages "Dart")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               (when (buffer-file-name)
+                                 (list "--stdin-name" (buffer-file-name))))))
 
 (define-format-all-formatter deno
-  (:executable "deno")
-  (:install (macos "brew install deno"))
-  (:languages
-   "JavaScript" "JSX"
-   "TypeScript" "TSX"
-   "JSON" "JSON5"
-   "Markdown")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable
-    "fmt"
-    "--ext" (let ((pair (assoc language
-                               '(("JavaScript" . "js")
-                                 ("TypeScript" . "ts")
-                                 ("JSON5" . "jsonc")
-                                 ("Markdown" . "md")))))
-              (if pair (cdr pair) (downcase language)))
-    "-")))
+                             (:executable "deno")
+                             (:install (macos "brew install deno"))
+                             (:languages
+                              "JavaScript" "JSX"
+                              "TypeScript" "TSX"
+                              "JSON" "JSON5"
+                              "Markdown")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               "fmt"
+                               "--ext" (let ((pair (assoc language
+                                                          '(("JavaScript" . "js")
+                                                            ("TypeScript" . "ts")
+                                                            ("JSON5" . "jsonc")
+                                                            ("Markdown" . "md")))))
+                                         (if pair (cdr pair) (downcase language)))
+                               "-")))
 
 (define-format-all-formatter dfmt
-  (:executable "dfmt")
-  (:install (macos "brew install dfmt"))
-  (:languages "D")
-  (:features)
-  (:format
-   (format-all--buffer-hard nil (regexp-quote "[error]") nil executable)))
+                             (:executable "dfmt")
+                             (:install (macos "brew install dfmt"))
+                             (:languages "D")
+                             (:features)
+                             (:format
+                              (format-all--buffer-hard nil (regexp-quote "[error]") nil executable)))
 
 (define-format-all-formatter dhall
-  (:executable "dhall")
-  (:install (macos "brew install dhall"))
-  (:languages "Dhall")
-  (:features)
-  (:format (format-all--buffer-easy executable "format")))
+                             (:executable "dhall")
+                             (:install (macos "brew install dhall"))
+                             (:languages "Dhall")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "format")))
 
 (define-format-all-formatter dockfmt
-  (:executable "dockfmt")
-  (:install "go get github.com/jessfraz/dockfmt")
-  (:languages "Dockerfile")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt")))
+                             (:executable "dockfmt")
+                             (:install "go get github.com/jessfraz/dockfmt")
+                             (:languages "Dockerfile")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt")))
 
 (define-format-all-formatter efmt
-  (:executable "efmt")
-  (:install "cargo install efmt")
-  (:languages "Erlang")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "efmt")
+                             (:install "cargo install efmt")
+                             (:languages "Erlang")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter elm-format
-  (:executable "elm-format")
-  (:install (macos "brew install elm"))
-  (:languages "Elm")
-  (:features)
-  (:format
-   (cl-destructuring-bind (output error-output)
-       (format-all--buffer-hard nil nil '("elm.json" "elm-package.json")
-                                executable "--yes" "--stdin")
-     (let ((error-output (format-all--remove-ansi-color error-output)))
-       (list output error-output)))))
+                             (:executable "elm-format")
+                             (:install (macos "brew install elm"))
+                             (:languages "Elm")
+                             (:features)
+                             (:format
+                              (cl-destructuring-bind (output error-output)
+                                  (format-all--buffer-hard nil nil '("elm.json" "elm-package.json")
+                                                           executable "--yes" "--stdin")
+                                (let ((error-output (format-all--remove-ansi-color error-output)))
+                                  (list output error-output)))))
 
 (define-format-all-formatter emacs-bibtex
-  (:executable)
-  (:install)
-  (:languages "BibTeX")
-  (:features)
-  (:format (format-all--buffer-native 'bibtex-mode 'bibtex-reformat)))
+                             (:executable)
+                             (:install)
+                             (:languages "BibTeX")
+                             (:features)
+                             (:format (format-all--buffer-native 'bibtex-mode 'bibtex-reformat)))
 
 (define-format-all-formatter emacs-bibtex-sort
-  (:executable)
-  (:install)
-  (:languages "BibTeX")
-  (:features)
-  (:format (format-all--buffer-native 'bibtex-mode 'bibtex-sort-buffer)))
+                             (:executable)
+                             (:install)
+                             (:languages "BibTeX")
+                             (:features)
+                             (:format (format-all--buffer-native 'bibtex-mode 'bibtex-sort-buffer)))
 
 (define-format-all-formatter emacs-hy
-  (:executable)
-  (:install)
-  (:languages "Hy")
-  (:features region)
-  (:format
-   (format-all--buffer-native
-    'hy-mode
-    (if region
-        (lambda () (indent-region (car region) (cdr region)))
-      (lambda () (indent-region (point-min) (point-max)))))))
+                             (:executable)
+                             (:install)
+                             (:languages "Hy")
+                             (:features region)
+                             (:format
+                              (format-all--buffer-native
+                               'hy-mode
+                               (if region
+                                   (lambda () (indent-region (car region) (cdr region)))
+                                 (lambda () (indent-region (point-min) (point-max)))))))
 
 (define-format-all-formatter emacs-lisp
-  (:executable)
-  (:install)
-  (:languages "Emacs Lisp")
-  (:features region)
-  (:format
-   (format-all--buffer-native
-    'emacs-lisp-mode
-    (if region
-        (lambda () (indent-region (car region) (cdr region)))
-      (lambda () (indent-region (point-min) (point-max)))))))
+                             (:executable)
+                             (:install)
+                             (:languages "Emacs Lisp")
+                             (:features region)
+                             (:format
+                              (format-all--buffer-native
+                               'emacs-lisp-mode
+                               (if region
+                                   (lambda () (indent-region (car region) (cdr region)))
+                                 (lambda () (indent-region (point-min) (point-max)))))))
 
 (define-format-all-formatter erb-format
-  (:executable "erb-format")
-  (:install "gem install erb-formatter")
-  (:languages "HTML+ERB")
-  (:features)
-  (:format (format-all--buffer-easy executable "--stdin")))
+                             (:executable "erb-format")
+                             (:install "gem install erb-formatter")
+                             (:languages "HTML+ERB")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "--stdin")))
 
 (define-format-all-formatter fantomas
-  (:executable "fantomas")
-  (:install "dotnet tool install -g fantomas-tool")
-  (:languages "F#")
-  (:features)
-  (:format (format-all--buffer-easy executable "--stdin" "--stdout")))
+                             (:executable "fantomas")
+                             (:install "dotnet tool install -g fantomas-tool")
+                             (:languages "F#")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "--stdin" "--stdout")))
 
 (define-format-all-formatter fish-indent
-  (:executable "fish_indent")
-  (:install (macos "brew install fish OR port install fish"))
-  (:languages "Fish")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "fish_indent")
+                             (:install (macos "brew install fish OR port install fish"))
+                             (:languages "Fish")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter fourmolu
-  (:executable "fourmolu")
-  (:install "stack install fourmolu")
-  (:languages "Haskell" "Literate Haskell")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable
-    (when (buffer-file-name)
-      (list "--stdin-input-file" (buffer-file-name))))))
+                             (:executable "fourmolu")
+                             (:install "stack install fourmolu")
+                             (:languages "Haskell" "Literate Haskell")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               (when (buffer-file-name)
+                                 (list "--stdin-input-file" (buffer-file-name))))))
 
 (define-format-all-formatter fprettify
-  (:executable "fprettify")
-  (:install "pip install fprettify")
-  (:languages "Fortran Free Form")
-  (:features)
-  (:format (format-all--buffer-easy executable "--silent")))
+                             (:executable "fprettify")
+                             (:install "pip install fprettify")
+                             (:languages "Fortran Free Form")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "--silent")))
 
 (define-format-all-formatter gawk
-  (:executable "gawk")
-  (:install (macos "brew install gawk"))
-  (:languages "Awk")
-  (:features)
-  (:format (format-all--buffer-easy executable "-f" "-" "--pretty-print=-")))
+                             (:executable "gawk")
+                             (:install (macos "brew install gawk"))
+                             (:languages "Awk")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-f" "-" "--pretty-print=-")))
 
 (define-format-all-formatter gleam
-  (:executable "gleam")
-  (:install (macos "brew install gleam"))
-  (:languages "_Gleam")
-  (:features)
-  (:format (format-all--buffer-easy executable "format" "--stdin")))
+                             (:executable "gleam")
+                             (:install (macos "brew install gleam"))
+                             (:languages "_Gleam")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "format" "--stdin")))
 
 (define-format-all-formatter gofmt
-  (:executable "gofmt")
-  (:install
-   (macos "brew install go")
-   (windows "scoop install go"))
-  (:languages "Go")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "gofmt")
+                             (:install
+                              (macos "brew install go")
+                              (windows "scoop install go"))
+                             (:languages "Go")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter goimports
-  (:executable "goimports")
-  (:install "go get golang.org/x/tools/cmd/goimports")
-  (:languages "Go")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "goimports")
+                             (:install "go get golang.org/x/tools/cmd/goimports")
+                             (:languages "Go")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter google-java-format
-  (:executable "google-java-format")
-  (:install)
-  (:languages "Java")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "google-java-format")
+                             (:install)
+                             (:languages "Java")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter hclfmt
-  (:executable "hclfmt")
-  (:install "go install github.com/hashicorp/hcl/v2/cmd/hclfmt@latest")
-  (:languages "HCL")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "hclfmt")
+                             (:install "go install github.com/hashicorp/hcl/v2/cmd/hclfmt@latest")
+                             (:languages "HCL")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter hindent
-  (:executable "hindent")
-  (:install "stack install hindent")
-  (:languages "Haskell" "Literate Haskell")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "hindent")
+                             (:install "stack install hindent")
+                             (:languages "Haskell" "Literate Haskell")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter html-tidy
-  (:executable "tidy")
-  (:install
-   (macos "brew install tidy-html5")
-   (windows "scoop install tidy"))
-  (:languages "HTML" "XML")
-  (:features)
-  (:format
-   (format-all--buffer-hard
-    '(0 1) nil nil
-    executable
-    "-q"
-    "--tidy-mark" "no"
-    "-indent"
-    (when (equal language "XML") "-xml"))))
+                             (:executable "tidy")
+                             (:install
+                              (macos "brew install tidy-html5")
+                              (windows "scoop install tidy"))
+                             (:languages "HTML" "XML")
+                             (:features)
+                             (:format
+                              (format-all--buffer-hard
+                               '(0 1) nil nil
+                               executable
+                               "-q"
+                               "--tidy-mark" "no"
+                               "-indent"
+                               (when (equal language "XML") "-xml"))))
 
 (define-format-all-formatter isort
-  (:executable "isort")
-  (:install "pip install isort")
-  (:languages "Python")
-  (:features)
-  (:format (format-all--buffer-easy executable "-q" "-")))
+                             (:executable "isort")
+                             (:install "pip install isort")
+                             (:languages "Python")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-q" "-")))
 
 (define-format-all-formatter istyle-verilog
-  (:executable "iStyle")
-  (:install)
-  (:languages "Verilog")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "iStyle")
+                             (:install)
+                             (:languages "Verilog")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter jsonnetfmt
-  (:executable "jsonnetfmt")
-  (:install (macos "brew install jsonnet"))
-  (:languages "Jsonnet")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "jsonnetfmt")
+                             (:install (macos "brew install jsonnet"))
+                             (:languages "Jsonnet")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter juliaformatter
-  (:executable "julia")
-  (:install)
-  (:languages "Julia")
-  (:features)
-  (:format (format-all--buffer-easy executable "--startup-file=no" "--history-file=no" "--project" "--quiet" "-e" "using JuliaFormatter; print(format_text(read(stdin, String)));")))
+                             (:executable "julia")
+                             (:install)
+                             (:languages "Julia")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "--startup-file=no" "--history-file=no" "--project" "--quiet" "-e" "using JuliaFormatter; print(format_text(read(stdin, String)));")))
 
 (define-format-all-formatter ktlint
-  (:executable "ktlint")
-  (:install (macos "brew install ktlint"))
-  (:languages "Kotlin")
-  (:features)
-  (:format (format-all--buffer-easy executable "--log-level=none" "--format" "--stdin")))
+                             (:executable "ktlint")
+                             (:install (macos "brew install ktlint"))
+                             (:languages "Kotlin")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "--log-level=none" "--format" "--stdin")))
 
 (define-format-all-formatter latexindent
-  (:executable "latexindent")
-  (:install)
-  (:languages "LaTeX")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "latexindent")
+                             (:install)
+                             (:languages "LaTeX")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter ledger-mode
-  (:executable)
-  (:install)
-  (:languages "_Ledger")
-  (:features)
-  (:format
-   (format-all--buffer-native 'ledger-mode 'ledger-mode-clean-buffer)))
+                             (:executable)
+                             (:install)
+                             (:languages "_Ledger")
+                             (:features)
+                             (:format
+                              (format-all--buffer-native 'ledger-mode 'ledger-mode-clean-buffer)))
 
 (define-format-all-formatter lua-fmt
-  (:executable "luafmt")
-  (:install "npm install --global lua-fmt")
-  (:languages "Lua")
-  (:features)
-  (:format (format-all--buffer-easy executable "--stdin")))
+                             (:executable "luafmt")
+                             (:install "npm install --global lua-fmt")
+                             (:languages "Lua")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "--stdin")))
 
 (define-format-all-formatter mix-format
-  (:executable "mix")
-  (:install (macos "brew install elixir"))
-  (:languages "Elixir" "HTML+EEX")
-  (:features)
-  (:format
-   (format-all--buffer-hard
-    nil nil '("mix.exs")
-    executable
-    "format"
-    (let ((config-file (format-all--locate-file ".formatter.exs")))
-      (when config-file (list "--dot-formatter" config-file)))
-    (cond ((buffer-file-name)
-           (list "--stdin-filename" (buffer-file-name)))
-          ((equal language "HTML+EEX")
-           (list "--stdin-filename" "stdin.heex"))
-          (t
-           (list)))
-    "-")))
+                             (:executable "mix")
+                             (:install (macos "brew install elixir"))
+                             (:languages "Elixir" "HTML+EEX")
+                             (:features)
+                             (:format
+                              (format-all--buffer-hard
+                               nil nil '("mix.exs")
+                               executable
+                               "format"
+                               (let ((config-file (format-all--locate-file ".formatter.exs")))
+                                 (when config-file (list "--dot-formatter" config-file)))
+                               (cond ((buffer-file-name)
+                                      (list "--stdin-filename" (buffer-file-name)))
+                                     ((equal language "HTML+EEX")
+                                      (list "--stdin-filename" "stdin.heex"))
+                                     (t
+                                      (list)))
+                               "-")))
 
 (define-format-all-formatter muon-fmt
-  (:executable "muon")
-  (:install (macos "brew install muon"))
-  (:languages "Meson")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt" "-")))
+                             (:executable "muon")
+                             (:install (macos "brew install muon"))
+                             (:languages "Meson")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt" "-")))
 
 (define-format-all-formatter nginxfmt
-  (:executable "nginxfmt")
-  (:install  "pip install nginxfmt")
-  (:languages "_Nginx")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "nginxfmt")
+                             (:install  "pip install nginxfmt")
+                             (:languages "_Nginx")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter nixfmt
-  (:executable "nixfmt")
-  (:install
-   "nix-env -f https://github.com/serokell/nixfmt/archive/master.tar.gz -i")
-  (:languages "Nix")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "nixfmt")
+                             (:install
+                              "nix-env -f https://github.com/serokell/nixfmt/archive/master.tar.gz -i")
+                             (:languages "Nix")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter nixpkgs-fmt
-  (:executable "nixpkgs-fmt")
-  (:install "nix-env -f https://github.com/nix-community/nixpkgs-fmt/archive/master.tar.gz -i")
-  (:languages "Nix")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "nixpkgs-fmt")
+                             (:install "nix-env -f https://github.com/nix-community/nixpkgs-fmt/archive/master.tar.gz -i")
+                             (:languages "Nix")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter ocamlformat
-  (:executable "ocamlformat")
-  (:install "opam install ocamlformat")
-  (:languages "OCaml")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable "-"
-    (when (buffer-file-name) (concat "--name=" (buffer-file-name))))))
+                             (:executable "ocamlformat")
+                             (:install "opam install ocamlformat")
+                             (:languages "OCaml")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable "-"
+                               (when (buffer-file-name) (concat "--name=" (buffer-file-name))))))
 
 (define-format-all-formatter ocp-indent
-  (:executable "ocp-indent")
-  (:install "opam install ocp-indent")
-  (:languages "OCaml")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "ocp-indent")
+                             (:install "opam install ocp-indent")
+                             (:languages "OCaml")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter ormolu
-  (:executable "ormolu")
-  (:install "stack install ormolu")
-  (:languages "Haskell" "Literate Haskell")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable
-    (when (buffer-file-name)
-      (list "--stdin-input-file" (buffer-file-name))))))
+                             (:executable "ormolu")
+                             (:install "stack install ormolu")
+                             (:languages "Haskell" "Literate Haskell")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               (when (buffer-file-name)
+                                 (list "--stdin-input-file" (buffer-file-name))))))
 
 (define-format-all-formatter perltidy
-  (:executable "perltidy")
-  (:install "cpan install Perl::Tidy")
-  (:languages "Perl")
-  (:features region)
-  (:format
-   (format-all--buffer-easy
-    executable
-    "--standard-error-output"
-    (when region
-      (format "--line-range-tidy=%d:%d"
-              (line-number-at-pos (car region))
-              (line-number-at-pos (cdr region)))))))
+                             (:executable "perltidy")
+                             (:install "cpan install Perl::Tidy")
+                             (:languages "Perl")
+                             (:features region)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               "--standard-error-output"
+                               (when region
+                                 (format "--line-range-tidy=%d:%d"
+                                         (line-number-at-pos (car region))
+                                         (line-number-at-pos (cdr region)))))))
 
 (define-format-all-formatter pgformatter
-  (:executable "pg_format")
-  (:install)
-  (:languages "SQL")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "pg_format")
+                             (:install)
+                             (:languages "SQL")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter prettier
-  (:executable "prettier")
-  (:install "npm install --global prettier @prettier/plugin-lua @prettier/plugin-php prettier-plugin-solidity prettier-plugin-svelte prettier-plugin-toml")
-  (:languages
-   "CSS" "GraphQL" "HTML" "JavaScript" "JSON" "JSON5" "JSX" "Less" "Lua"
-   "Markdown" "PHP" "SCSS" "Solidity" "Svelte" "TOML" "TSX" "TypeScript"
-   "Vue" "YAML"
-   "_Angular" "_Flow")
-  (:features region)
-  (:format
-   (format-all--buffer-easy
-    executable
-    (when (let* ((file (buffer-file-name))
-                 (info (and file
-                            (with-temp-buffer
-                              (call-process executable nil t nil
-                                            "--file-info" file)
-                              (buffer-string)))))
-            (when (and format-all-debug info)
-              (message "Format-All: --file-info: %s" info))
-            (or (not info)
-                (save-match-data
-                  (string-match
-                   (regexp-quote "\"inferredParser\": null")
-                   info))))
-      (list "--parser"
-            (let ((pair (assoc language
-                               '(("_Angular"   . "angular")
-                                 ("_Flow"      . "flow")
-                                 ("JavaScript" . "babel")
-                                 ("JSX"        . "babel")
-                                 ("Solidity"   . "solidity-parse")
-                                 ("TSX"        . "typescript")))))
-              (if pair (cdr pair) (downcase language)))))
-    (when (buffer-file-name)
-      (list "--stdin-filepath" (buffer-file-name)))
-    (let ((ignore-file (format-all--locate-file ".prettierignore")))
-      (when ignore-file
-        (list "--ignore-path" ignore-file)))
-    (when region
-      (list "--range-start" (number-to-string (1- (car region)))
-            "--range-end"   (number-to-string (1- (cdr region))))))))
+                             (:executable "prettier")
+                             (:install "npm install --global prettier @prettier/plugin-lua @prettier/plugin-php prettier-plugin-solidity prettier-plugin-svelte prettier-plugin-toml")
+                             (:languages
+                              "CSS" "GraphQL" "HTML" "JavaScript" "JSON" "JSON5" "JSX" "Less" "Lua"
+                              "Markdown" "PHP" "SCSS" "Solidity" "Svelte" "TOML" "TSX" "TypeScript"
+                              "Vue" "YAML"
+                              "_Angular" "_Flow")
+                             (:features region)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               (when (let* ((file (buffer-file-name))
+                                            (info (and file
+                                                       (with-temp-buffer
+                                                         (call-process executable nil t nil
+                                                                       "--file-info" file)
+                                                         (buffer-string)))))
+                                       (when (and format-all-debug info)
+                                         (message "Format-All: --file-info: %s" info))
+                                       (or (not info)
+                                           (save-match-data
+                                             (string-match
+                                              (regexp-quote "\"inferredParser\": null")
+                                              info))))
+                                 (list "--parser"
+                                       (let ((pair (assoc language
+                                                          '(("_Angular"   . "angular")
+                                                            ("_Flow"      . "flow")
+                                                            ("JavaScript" . "babel")
+                                                            ("JSX"        . "babel")
+                                                            ("Solidity"   . "solidity-parse")
+                                                            ("TSX"        . "typescript")))))
+                                         (if pair (cdr pair) (downcase language)))))
+                               (when (buffer-file-name)
+                                 (list "--stdin-filepath" (buffer-file-name)))
+                               (let ((ignore-file (format-all--locate-file ".prettierignore")))
+                                 (when ignore-file
+                                   (list "--ignore-path" ignore-file)))
+                               (when region
+                                 (list "--range-start" (number-to-string (1- (car region)))
+                                       "--range-end"   (number-to-string (1- (cdr region))))))))
 
 (define-format-all-formatter prettierd
-  (:executable "prettierd")
-  (:install "npm install --global @fsouza/prettierd")
-  (:languages
-   "CSS" "GraphQL" "HTML" "JavaScript" "JSON" "JSON5" "JSX"
-   "Less" "Markdown" "SCSS" "TSX" "TypeScript" "Vue" "YAML")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable
-    (or (buffer-file-name)
-        (buffer-name)))))
+                             (:executable "prettierd")
+                             (:install "npm install --global @fsouza/prettierd")
+                             (:languages
+                              "CSS" "GraphQL" "HTML" "JavaScript" "JSON" "JSON5" "JSX"
+                              "Less" "Markdown" "SCSS" "TSX" "TypeScript" "Vue" "YAML")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               (or (buffer-file-name)
+                                   (buffer-name)))))
 
 (define-format-all-formatter purs-tidy
-  (:executable "purs-tidy")
-  (:install "npm install --global purs-tidy")
-  (:languages "PureScript")
-  (:features)
-  (:format (format-all--buffer-easy executable "format")))
+                             (:executable "purs-tidy")
+                             (:install "npm install --global purs-tidy")
+                             (:languages "PureScript")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "format")))
 
 (define-format-all-formatter purty
-  (:executable "purty")
-  (:install "npm install --global purty")
-  (:languages "PureScript")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "purty")
+                             (:install "npm install --global purty")
+                             (:languages "PureScript")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter raco-fmt
-  (:executable "raco")
-  (:install "raco pkg install fmt")
-  (:languages "Racket")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt")))
+                             (:executable "raco")
+                             (:install "raco pkg install fmt")
+                             (:languages "Racket")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt")))
 
 (define-format-all-formatter rescript
-  (:executable "rescript")
-  (:install "npm install --global rescript")
-  (:languages "ReScript")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable "format" "-stdin"
-    (let ((ext (if (not (buffer-file-name)) ""
-                 (file-name-extension (buffer-file-name)))))
-      (concat "." (if (equal ext "") "res" ext))))))
+                             (:executable "rescript")
+                             (:install "npm install --global rescript")
+                             (:languages "ReScript")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable "format" "-stdin"
+                               (let ((ext (if (not (buffer-file-name)) ""
+                                            (file-name-extension (buffer-file-name)))))
+                                 (concat "." (if (equal ext "") "res" ext))))))
 
 (define-format-all-formatter rubocop
-  (:executable "rubocop")
-  (:install "gem install rubocop:'>=1.4.0'")
-  (:languages "Ruby")
-  (:features)
-  (:format
-   (format-all--buffer-hard-ruby
-    "rubocop" '(0 1) nil nil
-    executable
-    "--auto-correct"
-    "--format" "quiet"
-    "--stderr"
-    "--stdin" (or (buffer-file-name) (buffer-name)))))
+                             (:executable "rubocop")
+                             (:install "gem install rubocop:'>=1.4.0'")
+                             (:languages "Ruby")
+                             (:features)
+                             (:format
+                              (format-all--buffer-hard-ruby
+                               "rubocop" '(0 1) nil nil
+                               executable
+                               "--auto-correct"
+                               "--format" "quiet"
+                               "--stderr"
+                               "--stdin" (or (buffer-file-name) (buffer-name)))))
 
 (define-format-all-formatter ruff
-  (:executable "ruff")
-  (:install "pip install ruff")
-  (:languages "Python")
-  (:features)
-  (:format (format-all--buffer-easy
-            executable "format"
-            "--silent"
-            "--stdin-filename" (or (buffer-file-name) (buffer-name))
-            "-")))
+                             (:executable "ruff")
+                             (:install "pip install ruff")
+                             (:languages "Python")
+                             (:features)
+                             (:format (format-all--buffer-easy
+                                       executable "format"
+                                       "--silent"
+                                       "--stdin-filename" (or (buffer-file-name) (buffer-name))
+                                       "-")))
 
 (define-format-all-formatter rufo
-  (:executable "rufo")
-  (:install "gem install rufo")
-  (:languages "Ruby")
-  (:features)
-  (:format
-   (format-all--buffer-hard-ruby
-    "rufo" nil nil nil
-    executable
-    "--simple-exit"
-    (when (buffer-file-name)
-      (list "--filename" (buffer-file-name))))))
+                             (:executable "rufo")
+                             (:install "gem install rufo")
+                             (:languages "Ruby")
+                             (:features)
+                             (:format
+                              (format-all--buffer-hard-ruby
+                               "rufo" nil nil nil
+                               executable
+                               "--simple-exit"
+                               (when (buffer-file-name)
+                                 (list "--filename" (buffer-file-name))))))
 
 (define-format-all-formatter rustfmt
-  (:executable "rustfmt")
-  (:install "rustup component add rustfmt")
-  (:languages "Rust")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "rustfmt")
+                             (:install "rustup component add rustfmt")
+                             (:languages "Rust")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter scalafmt
-  (:executable "scalafmt")
-  (:install "coursier bootstrap org.scalameta:scalafmt-cli_2.12:2.4.0-RC1 -r sonatype:snapshots -o /usr/local/bin/scalafmt --standalone --main org.scalafmt.cli.Cli")
-  (:languages "Scala")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable "--stdin" "--non-interactive" "--quiet" "--stdout")))
+                             (:executable "scalafmt")
+                             (:install "coursier bootstrap org.scalameta:scalafmt-cli_2.12:2.4.0-RC1 -r sonatype:snapshots -o /usr/local/bin/scalafmt --standalone --main org.scalafmt.cli.Cli")
+                             (:languages "Scala")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable "--stdin" "--non-interactive" "--quiet" "--stdout")))
 
 (define-format-all-formatter shfmt
-  (:executable "shfmt")
-  (:install
-   (macos "brew install shfmt")
-   (windows "scoop install shfmt"))
-  (:languages "Shell")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable
-    (if (buffer-file-name)
-        (list "-filename" (buffer-file-name))
-      (list "-ln" (cl-case (and (eql major-mode 'sh-mode)
-                                (boundp 'sh-shell)
-                                (symbol-value 'sh-shell))
-                    (bash "bash")
-                    (mksh "mksh")
-                    (t "posix")))))))
+                             (:executable "shfmt")
+                             (:install
+                              (macos "brew install shfmt")
+                              (windows "scoop install shfmt"))
+                             (:languages "Shell")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               (if (buffer-file-name)
+                                   (list "-filename" (buffer-file-name))
+                                 (list "-ln" (cl-case (and (eql major-mode 'sh-mode)
+                                                           (boundp 'sh-shell)
+                                                           (symbol-value 'sh-shell))
+                                               (bash "bash")
+                                               (mksh "mksh")
+                                               (t "posix")))))))
 
 (define-format-all-formatter snakefmt
-  (:executable "snakefmt")
-  (:install)
-  (:languages "_Snakemake")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "snakefmt")
+                             (:install)
+                             (:languages "_Snakemake")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter sqlformat
-  (:executable "sqlformat")
-  (:install "pip install sqlparse")
-  (:languages "SQL")
-  (:features)
-  (:format
-   (let* ((ic (car default-process-coding-system))
-          (oc (cdr default-process-coding-system))
-          (ienc (symbol-name (or (coding-system-get ic :mime-charset)
-                                 'utf-8)))
-          (oenc (symbol-name (or (coding-system-get oc :mime-charset)
-                                 'utf-8)))
-          (process-environment (cons (concat "PYTHONIOENCODING=" oenc)
-                                     process-environment)))
-     (format-all--buffer-easy executable "--encoding" ienc "-"))))
+                             (:executable "sqlformat")
+                             (:install "pip install sqlparse")
+                             (:languages "SQL")
+                             (:features)
+                             (:format
+                              (let* ((ic (car default-process-coding-system))
+                                     (oc (cdr default-process-coding-system))
+                                     (ienc (symbol-name (or (coding-system-get ic :mime-charset)
+                                                            'utf-8)))
+                                     (oenc (symbol-name (or (coding-system-get oc :mime-charset)
+                                                            'utf-8)))
+                                     (process-environment (cons (concat "PYTHONIOENCODING=" oenc)
+                                                                process-environment)))
+                                (format-all--buffer-easy executable "--encoding" ienc "-"))))
 
 (define-format-all-formatter standard
-  (:executable "standard")
-  (:install "npm install --global standard")
-  (:languages "JavaScript" "JSX")
-  (:features)
-  (:format
-   ;; `standard --stdin` properly uses zero vs non-zero exit codes to
-   ;; indicate success vs error. However, it checks for quite a broad
-   ;; range of errors, all the way up to undeclared identifiers and
-   ;; such. To catch only syntax errors, we need to look specifically
-   ;; for the text "Parsing error:".
-   (format-all--buffer-hard
-    '(0 1) ".*?:.*?:[0-9]+:[0-9]+: Parsing error:" nil
-    executable "--fix" "--stdin")))
+                             (:executable "standard")
+                             (:install "npm install --global standard")
+                             (:languages "JavaScript" "JSX")
+                             (:features)
+                             (:format
+                              ;; `standard --stdin` properly uses zero vs non-zero exit codes to
+                              ;; indicate success vs error. However, it checks for quite a broad
+                              ;; range of errors, all the way up to undeclared identifiers and
+                              ;; such. To catch only syntax errors, we need to look specifically
+                              ;; for the text "Parsing error:".
+                              (format-all--buffer-hard
+                               '(0 1) ".*?:.*?:[0-9]+:[0-9]+: Parsing error:" nil
+                               executable "--fix" "--stdin")))
 
 (define-format-all-formatter standardrb
-  (:executable "standardrb")
-  (:install "gem install standard:'>=0.13.0'")
-  (:languages "Ruby")
-  (:features)
-  (:format
-   (format-all--buffer-hard-ruby
-    "standard" '(0 1) nil nil
-    executable
-    "--stderr"
-    "--fix"
-    "--stdin" (or (buffer-file-name) (buffer-name)))))
+                             (:executable "standardrb")
+                             (:install "gem install standard:'>=0.13.0'")
+                             (:languages "Ruby")
+                             (:features)
+                             (:format
+                              (format-all--buffer-hard-ruby
+                               "standard" '(0 1) nil nil
+                               executable
+                               "--stderr"
+                               "--fix"
+                               "--stdin" (or (buffer-file-name) (buffer-name)))))
 
 (define-format-all-formatter stree
-  (:executable "stree")
-  (:install "gem install syntax_tree:'>=2.0.1'")
-  (:languages "Ruby")
-  (:features)
-  (:format
-   (format-all--buffer-hard-ruby
-    "stree" '(0 1) nil '(".streerc")
-    executable
-    "format")))
+                             (:executable "stree")
+                             (:install "gem install syntax_tree:'>=2.0.1'")
+                             (:languages "Ruby")
+                             (:features)
+                             (:format
+                              (format-all--buffer-hard-ruby
+                               "stree" '(0 1) nil '(".streerc")
+                               executable
+                               "format")))
 
 (define-format-all-formatter styler
-  (:executable "Rscript")
-  (:install "Rscript -e \"install.packages('styler')\"")
-  (:languages "R")
-  (:features)
-  (:format
-   (format-all--buffer-easy
-    executable
-    "-e" (concat
-          "options(styler.colored_print.vertical=FALSE);"
-          " con <- file('stdin');"
-          " out <- styler::style_text(readLines(con));"
-          " close(con);"
-          " out"))))
+                             (:executable "Rscript")
+                             (:install "Rscript -e \"install.packages('styler')\"")
+                             (:languages "R")
+                             (:features)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               "-e" (concat
+                                     "options(styler.colored_print.vertical=FALSE);"
+                                     " con <- file('stdin');"
+                                     " out <- styler::style_text(readLines(con));"
+                                     " close(con);"
+                                     " out"))))
 
 (define-format-all-formatter stylish-haskell
-  (:executable "stylish-haskell")
-  (:install "stack install stylish-haskell")
-  (:languages "Haskell")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "stylish-haskell")
+                             (:install "stack install stylish-haskell")
+                             (:languages "Haskell")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter stylua
-  (:executable "stylua")
-  (:install "cargo install stylua")
-  (:languages "Lua")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "stylua")
+                             (:install "cargo install stylua")
+                             (:languages "Lua")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter swiftformat
-  (:executable "swiftformat")
-  (:install (macos "brew install swiftformat"))
-  (:languages "Swift")
-  (:features region)
-  (:format
-   (format-all--buffer-easy
-    executable
-    "--quiet"
-    (let ((config (format-all--locate-file ".swiftformat")))
-      (when config (list "--config" config)))
-    (when region
-      (list "--linerange" (format "%d,%d"
-                                  (line-number-at-pos (car region))
-                                  (line-number-at-pos (cdr region))))))))
+                             (:executable "swiftformat")
+                             (:install (macos "brew install swiftformat"))
+                             (:languages "Swift")
+                             (:features region)
+                             (:format
+                              (format-all--buffer-easy
+                               executable
+                               "--quiet"
+                               (let ((config (format-all--locate-file ".swiftformat")))
+                                 (when config (list "--config" config)))
+                               (when region
+                                 (list "--linerange" (format "%d,%d"
+                                                             (line-number-at-pos (car region))
+                                                             (line-number-at-pos (cdr region))))))))
 
 (define-format-all-formatter taplo-fmt
-  (:executable "taplo")
-  (:install "npm install --global @taplo/cli")
-  (:languages "TOML")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt" "-")))
+                             (:executable "taplo")
+                             (:install "npm install --global @taplo/cli")
+                             (:languages "TOML")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt" "-")))
 
 (define-format-all-formatter terraform-fmt
-  (:executable "terraform")
-  (:install (macos "brew install terraform"))
-  (:languages "Terraform")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt" "-no-color" "-")))
+                             (:executable "terraform")
+                             (:install (macos "brew install terraform"))
+                             (:languages "Terraform")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt" "-no-color" "-")))
 
 (define-format-all-formatter ts-standard
-  (:executable "ts-standard")
-  (:install "npm install --global ts-standard")
-  (:languages "TypeScript" "TSX")
-  (:features)
-  (:format
-   ;; `ts-standard --stdin` properly uses zero vs non-zero exit codes to
-   ;; indicate success vs error. However, it checks for quite a broad
-   ;; range of errors, all the way up to undeclared identifiers and
-   ;; such. To catch only syntax errors, we need to look specifically
-   ;; for the text "Parsing error:".
-   (format-all--buffer-hard
-    '(0 1) ".*?:.*?:[0-9]+:[0-9]+: Parsing error:" '("tsconfig.json")
-    executable "--fix" "--stdin"
-    (when (buffer-file-name)
-      (list "--stdin-filename" (buffer-file-name))))))
+                             (:executable "ts-standard")
+                             (:install "npm install --global ts-standard")
+                             (:languages "TypeScript" "TSX")
+                             (:features)
+                             (:format
+                              ;; `ts-standard --stdin` properly uses zero vs non-zero exit codes to
+                              ;; indicate success vs error. However, it checks for quite a broad
+                              ;; range of errors, all the way up to undeclared identifiers and
+                              ;; such. To catch only syntax errors, we need to look specifically
+                              ;; for the text "Parsing error:".
+                              (format-all--buffer-hard
+                               '(0 1) ".*?:.*?:[0-9]+:[0-9]+: Parsing error:" '("tsconfig.json")
+                               executable "--fix" "--stdin"
+                               (when (buffer-file-name)
+                                 (list "--stdin-filename" (buffer-file-name))))))
 
 (define-format-all-formatter v-fmt
-  (:executable "v")
-  (:install)
-  (:languages "V")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt")))
+                             (:executable "v")
+                             (:install)
+                             (:languages "V")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt")))
 
 (define-format-all-formatter verible
-  (:executable "verible-verilog-format")
-  (:install)
-  (:languages "Verilog" "SystemVerilog")
-  (:features)
-  (:format (format-all--buffer-easy executable "-")))
+                             (:executable "verible-verilog-format")
+                             (:install)
+                             (:languages "Verilog" "SystemVerilog")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "-")))
 
 (define-format-all-formatter yapf
-  (:executable "yapf")
-  (:install "pip install yapf")
-  (:languages "Python")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "yapf")
+                             (:install "pip install yapf")
+                             (:languages "Python")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (define-format-all-formatter zig
-  (:executable "zig")
-  (:install)
-  (:languages "Zig")
-  (:features)
-  (:format (format-all--buffer-easy executable "fmt" "--stdin")))
+                             (:executable "zig")
+                             (:install)
+                             (:languages "Zig")
+                             (:features)
+                             (:format (format-all--buffer-easy executable "fmt" "--stdin")))
 
 (define-format-all-formatter zprint
-  (:executable "zprint")
-  (:install)
-  (:languages "Clojure")
-  (:features)
-  (:format (format-all--buffer-easy executable)))
+                             (:executable "zprint")
+                             (:install)
+                             (:languages "Clojure")
+                             (:features)
+                             (:format (format-all--buffer-easy executable)))
 
 (defun format-all--language-id-buffer ()
   "Return the language used in the current buffer, or NIL.
