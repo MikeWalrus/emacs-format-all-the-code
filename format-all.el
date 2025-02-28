@@ -167,6 +167,7 @@
     ("JSON" prettier)
     ("JSON5" prettier)
     ("Jsonnet" jsonnetfmt)
+    ("JuliaFormatter" juliaformatter)
     ("JSX" prettier)
     ("Kotlin" ktlint)
     ("LaTeX" latexindent)
@@ -227,9 +228,9 @@
 (defcustom format-all-show-errors 'errors
   "When to show formatting errors or warnings."
   :type '(choice (const :tag "Always" always)
-                 (const :tag "Errors" errors)
-                 (const :tag "Warnings" warnings)
-                 (const :tag "Never" never))
+          (const :tag "Errors" errors)
+          (const :tag "Warnings" warnings)
+          (const :tag "Never" never))
   :group 'format-all)
 
 (defcustom format-all-mode-lighter " FmtAll"
@@ -292,7 +293,7 @@ association list. Using \".dir-locals.el\" is convenient since
 the rules for an entire source tree can be given in one file.")
 
 (define-error 'format-all-executable-not-found
-  "Formatter not found")
+              "Formatter not found")
 
 (defun format-all--proper-list-p (object)
   "Return t if OBJECT is a proper list, nil otherwise."
@@ -1050,6 +1051,13 @@ Consult the existing formatters for examples of BODY."
   (:languages "Jsonnet")
   (:features)
   (:format (format-all--buffer-easy executable "-")))
+
+(define-format-all-formatter juliaformatter
+  (:executable "julia")
+  (:install)
+  (:languages "Julia")
+  (:features)
+  (:format (format-all--buffer-easy executable "--startup-file=no" "--history-file=no" "--project" "--quiet" "-e" "using JuliaFormatter; print(format_text(read(stdin, String)));")))
 
 (define-format-all-formatter ktlint
   (:executable "ktlint")
